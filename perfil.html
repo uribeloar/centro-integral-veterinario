@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil del negocio — Centro Integral Veterinario Jardines</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--crema:#eef4f1;--papel:#f7faf8;--tinta:#14453d;--cafe:#1d5c50;--canela:#c98f3f;--mute:#6f8079;--line:rgba(0,0,0,.16);--wa:#25d366}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--crema);color:var(--tinta);font-family:Jost,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding:0 22px}
+  h1,h2,h3{font-family:'Bitter',serif;font-weight:600;margin:0}
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(248,243,234,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px;max-width:1100px;margin:0 auto;padding:0 22px}
+  .logo{font-family:'Bitter',serif;font-size:19px;color:var(--tinta);text-decoration:none}
+  .logo em{font-style:italic;color:var(--canela)}
+  .volver{color:var(--mute);text-decoration:none;font-size:13px;text-transform:uppercase;letter-spacing:.1em}
+  .volver:hover{color:var(--cafe)}
+  /* gate */
+  #gate{min-height:70svh;display:grid;place-content:center;text-align:center;padding:40px 22px}
+  #gate .card{background:var(--papel);border:1px solid var(--line);border-radius:24px;padding:40px 34px;max-width:380px;box-shadow:0 26px 60px -32px rgba(0,0,0,.4)}
+  #gate h1{font-size:24px}
+  #gate p{font-weight:300;color:var(--mute);font-size:14.5px;line-height:1.6;margin:12px 0 20px}
+  .pin{display:flex;gap:10px;justify-content:center}
+  .pin input{width:52px;height:60px;text-align:center;font-size:24px;font-family:'Bitter',serif;border:1px solid rgba(0,0,0,.3);border-radius:14px;background:#fff;color:var(--tinta);outline:none}
+  .pin input:focus{border-color:var(--canela)}
+  #gateErr{color:#b5432a;font-size:13px;margin-top:14px;display:none}
+  /* panel */
+  #panel{display:none;padding:40px 0 80px}
+  .acc{background:var(--papel);border:1px solid var(--line);border-radius:20px;margin-bottom:14px;overflow:hidden;transition:box-shadow .3s}
+  .acc.open{box-shadow:0 20px 46px -28px rgba(0,0,0,.4);border-color:rgba(0,0,0,.4)}
+  .acc-head{display:flex;align-items:center;gap:14px;padding:20px 22px;cursor:pointer;user-select:none}
+  .acc-head .ic{width:42px;height:42px;border-radius:12px;background:rgba(0,0,0,.12);display:grid;place-items:center;font-size:19px;flex:none}
+  .acc-head h2{font-size:18px;flex:1}
+  .acc-head p{margin:2px 0 0;font-size:13px;font-weight:300;color:var(--mute)}
+  .acc-head .arrow{color:var(--canela);transition:transform .3s}
+  .acc.open .arrow{transform:rotate(90deg)}
+  .acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+  .acc.open .acc-body{grid-template-rows:1fr}
+  .acc-body>div{overflow:hidden}
+  .acc-inner{padding:0 22px 24px}
+  .srow{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .srow .nm{flex:1;font-size:14.5px;min-width:0}
+  .srow .nm small{display:block;color:var(--mute);font-weight:300;font-size:12px}
+  .srow input{width:76px;text-align:right;border:1px solid rgba(0,0,0,.25);border-radius:10px;padding:8px 10px;font-family:Jost,sans-serif;font-size:14px;color:var(--tinta);background:#fff;outline:none}
+  .srow input.chg{border-color:var(--canela);background:rgba(0,0,0,.07);font-weight:600}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:14px 26px;font-size:14.5px;font-weight:500;text-decoration:none;cursor:pointer;border:0;font-family:Jost,sans-serif}
+  .btn-wa{background:linear-gradient(145deg,#25d366,#12b455);color:#fff;box-shadow:0 10px 24px -8px rgba(18,180,85,.5);width:100%;margin-top:18px}
+  .btn-wa:hover{filter:brightness(1.06)}
+  .tienda-item{border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:12px;background:#fff}
+  .tienda-item h3{font-size:16px}
+  .tienda-item p{margin:5px 0 10px;font-size:13px;font-weight:300;color:var(--mute);line-height:1.5}
+  .tienda-item .precio{font-family:'Bitter',serif;color:var(--cafe);font-size:16px}
+  .btn-mini{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:linear-gradient(145deg,#25d366,#12b455);color:#fff;font-size:13px;font-weight:500;padding:10px 18px;text-decoration:none;margin-top:8px}
+  .nota{font-size:12.5px;color:var(--mute);font-weight:300;line-height:1.6;margin-top:14px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Centro Integral <em>Veterinario</em></a>
+    <a href="index.html" class="volver">‹ Volver al sitio</a>
+  </div>
+</header>
+
+<!-- GATE -->
+<div id="gate">
+  <div class="card">
+    <div style="font-size:34px">🐾</div>
+    <h1>Acceso del dueño</h1>
+    <p>Este espacio es para la administración de Centro Integral Veterinario Jardines. Ingresa tu NIP de 4 dígitos.</p>
+    <div class="pin">
+      <input inputmode="numeric" maxlength="1" autocomplete="off">
+      <input inputmode="numeric" maxlength="1" autocomplete="off">
+      <input inputmode="numeric" maxlength="1" autocomplete="off">
+      <input inputmode="numeric" maxlength="1" autocomplete="off">
+    </div>
+    <p id="gateErr">NIP incorrecto — intenta de nuevo.</p>
+  </div>
+</div>
+
+<!-- PANEL -->
+<main id="panel" class="wrap">
+  <span style="display:inline-block;text-transform:uppercase;letter-spacing:.3em;font-size:11px;color:var(--canela);font-weight:500">Panel del negocio</span>
+  <h1 style="font-size:clamp(1.7rem,4vw,2.4rem);margin:10px 0 26px">Hola, <em style="font-style:italic;color:var(--canela)">Veterinario</em> 👋</h1>
+
+  <!-- 1 · Carta -->
+  <section class="acc open" data-acc>
+    <div class="acc-head" data-acc-head>
+      <span class="ic">📋</span>
+      <div style="flex:1"><h2>Tus servicios</h2><p>Ajusta tus servicios y mándanos el cambio — lo publicamos en menos de 24 h.</p></div>
+      <span class="arrow">›</span>
+    </div>
+    <div class="acc-body"><div><div class="acc-inner">
+      <div id="lista"></div>
+      <a href="#" id="enviarCambios" class="btn btn-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.163 5.335 5.5.001 12.05.001c3.2 0 6.207 1.246 8.466 3.507a11.82 11.82 0 013.505 8.472c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.729-.978zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.017-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.007-1.413.247-.695.247-1.29.173-1.414z"/></svg>
+        Enviar cambios a Hostess
+      </a>
+      <p class="nota">Los cambios se marcan en color canela. Al enviarlos se abre WhatsApp con la lista lista para mandar — nosotros actualizamos tu página.</p>
+    </div></div></div>
+  </section>
+
+  <!-- 2 · Mejoras -->
+  <section class="acc" data-acc>
+    <div class="acc-head" data-acc-head>
+      <span class="ic">✨</span>
+      <div style="flex:1"><h2>Mejoras para tu negocio</h2><p>Lo que Hostess puede sumarle a tu página y a tu operación.</p></div>
+      <span class="arrow">›</span>
+    </div>
+    <div class="acc-body"><div><div class="acc-inner">
+      <div class="tienda-item">
+        <h3>Asistente virtual en WhatsApp</h3>
+        <p>Contesta a tus clientes 24/7: citas, horarios, servicios — sin que tú toques el teléfono.</p>
+        <span class="precio">$2,000 arranque + $1,500/mes</span><br>
+        <a class="btn-mini" target="_blank" rel="noopener" href="https://wa.me/523332239324?text=%C2%A1Hola%20Hostess!%20Soy%20de%20Centro%20Integral%20Veterinario%20Jardines%20y%20me%20interesa%20el%20Asistente%20virtual%20de%20WhatsApp.">Lo quiero</a>
+      </div>
+      <div class="tienda-item">
+        <h3>Dominio propio + correo</h3>
+        <p>Tu página en <b>centrointegralveterinario.mx</b> y correo profesional con tu marca.</p>
+        <span class="precio">Cotización a tu medida</span><br>
+        <a class="btn-mini" target="_blank" rel="noopener" href="https://wa.me/523332239324?text=%C2%A1Hola%20Hostess!%20Soy%20de%20Centro%20Integral%20Veterinario%20Jardines%20y%20quiero%20mi%20dominio%20propio%20y%20correo.">Lo quiero</a>
+      </div>
+      <div class="tienda-item">
+        <h3>Fotos profesionales</h3>
+        <p>Sesión de fotos de tus platillos y tu clínica para que la página venda todavía más.</p>
+        <span class="precio">Cotización a tu medida</span><br>
+        <a class="btn-mini" target="_blank" rel="noopener" href="https://wa.me/523332239324?text=%C2%A1Hola%20Hostess!%20Soy%20de%20Centro%20Integral%20Veterinario%20Jardines%20y%20me%20interesan%20las%20fotos%20profesionales.">Lo quiero</a>
+      </div>
+    </div></div></div>
+  </section>
+
+  <!-- 3 · Soporte -->
+  <section class="acc" data-acc>
+    <div class="acc-head" data-acc-head>
+      <span class="ic">🤝</span>
+      <div style="flex:1"><h2>Soporte</h2><p>¿Algo de tu página no se ve bien o quieres cambiar un texto?</p></div>
+      <span class="arrow">›</span>
+    </div>
+    <div class="acc-body"><div><div class="acc-inner">
+      <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/523332239324?text=%C2%A1Hola%20Hostess!%20Soy%20de%20Centro%20Integral%20Veterinario%20Jardines%20y%20necesito%20soporte%20con%20mi%20p%C3%A1gina.">
+        Escribir a Hostess
+      </a>
+      <p class="nota">Te respondemos el mismo día.</p>
+    </div></div></div>
+  </section>
+</main>
+
+<script src="js/base.js" defer></script>
+<script>
+(function(){
+  var PIN='3746'; // provisional — se define con la dueña al entregar
+  var inputs=[].slice.call(document.querySelectorAll('.pin input'));
+  var gate=document.getElementById('gate'), panel=document.getElementById('panel'), err=document.getElementById('gateErr');
+  if(sessionStorage.getItem('centro_integral_veterinario_owner')==='1'){ gate.style.display='none'; panel.style.display='block'; montar(); }
+  inputs.forEach(function(inp,i){
+    inp.addEventListener('input',function(){
+      if(inp.value && i<3) inputs[i+1].focus();
+      var code=inputs.map(function(x){return x.value}).join('');
+      if(code.length===4){
+        if(code===PIN){ sessionStorage.setItem('centro_integral_veterinario_owner','1'); gate.style.display='none'; panel.style.display='block'; montar(); }
+        else{ err.style.display='block'; inputs.forEach(function(x){x.value=''}); inputs[0].focus(); }
+      }
+    });
+    inp.addEventListener('keydown',function(e){ if(e.key==='Backspace'&&!inp.value&&i>0) inputs[i-1].focus(); });
+  });
+
+  // acordeón exclusivo
+  document.querySelectorAll('[data-acc-head]').forEach(function(h){
+    h.addEventListener('click',function(){
+      var acc=h.closest('[data-acc]');
+      var was=acc.classList.contains('open');
+      document.querySelectorAll('[data-acc]').forEach(function(a){a.classList.remove('open')});
+      if(!was) acc.classList.add('open');
+    });
+  });
+
+  var cambios={};
+  function montar(){
+    function go(){
+      var B=window.VetBase;
+      if(!B){ setTimeout(go,80); return; }
+      var lista=document.getElementById('lista');
+      lista.innerHTML='';
+      Object.keys(B.SERV).forEach(function(cat){
+        var t=document.createElement('p'); t.style.cssText='margin:16px 0 4px;font-family:\'Playfair Display\',serif;font-size:15px;color:#1d5c50;'; t.textContent=cat; lista.appendChild(t);
+        B.SERV[cat].forEach(function(s){
+          var row=document.createElement('div'); row.className='srow';
+          var nm=document.createElement('div'); nm.className='nm'; nm.innerHTML=s.n+(s.x?'<small>'+s.x+'</small>':''); row.appendChild(nm);
+          var inp=document.createElement('input'); inp.inputMode='numeric'; inp.value=(s.p!==undefined?s.p:''); inp.placeholder='$';
+          inp.addEventListener('input',function(){
+            if(String(inp.value)!==String(s.p)){ inp.classList.add('chg'); cambios[s.n]={de:s.p,a:inp.value}; }
+            else{ inp.classList.remove('chg'); delete cambios[s.n]; }
+          });
+          row.appendChild(inp);
+          lista.appendChild(row);
+        });
+      });
+    }
+    go();
+  }
+
+  document.getElementById('enviarCambios').addEventListener('click',function(e){
+    e.preventDefault();
+    var keys=Object.keys(cambios);
+    var t;
+    if(!keys.length){ t='¡Hola Hostess! Soy de Centro Integral Veterinario Jardines. Quiero hacer cambios en mi carta.'; }
+    else{
+      t='¡Hola Hostess! Soy de Centro Integral Veterinario Jardines. Cambios en mi carta:\n\n';
+      keys.forEach(function(k){ t+='· '+k+': $'+cambios[k].de+' → $'+cambios[k].a+'\n'; });
+      t+='\n¿Los publican por favor? ¡Gracias!';
+    }
+    window.open('https://wa.me/523332239324?text='+encodeURIComponent(t),'_blank');
+  });
+})();
+</script>
+</body>
+</html>
